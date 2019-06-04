@@ -1,0 +1,26 @@
+ion-list.homecard1.list.list-ios, .item-md, .item-ios {
+background-color: transparentize($color: #ffffff, $amount: 1) !important;
+font-size: 50px;
+// margin-bottom: 5px;
+// color: black;
+}
+
+.item ion-thumbnail {
+    // margin: 20px 20px;
+    width: 100px;    
+    height: 100px;
+    img {
+        width: 100px;    
+        height: 100px;
+    }
+}
+
+.subheader {
+  font-weight: bold;
+  color: Sienna;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,24 @@
+.my-selected-option {
+    /* color: rgb(50, 126, 255);
+     */
+     /* color: blueviolet; */
+     color: green;
+    /* background-color: rgb(89, 134, 89); */
+    font-weight: 700;
+}
+
+/* .tabbar a[aria-selected=true] {
+    border: none;
+    color: green;  
+} */
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+  color: green !important;
+}
+.tabs-md .tab-button[aria-selected=true] {
+  color: green !important;
+}
+
+ion-navbar[hidebackbutton] button[menutoggle] {
+  display: block !important;
+}

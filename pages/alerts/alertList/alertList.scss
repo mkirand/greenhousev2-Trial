@@ -1,0 +1,49 @@
+ion-list.homecard1.list.list-ios, .item-md, .item-ios {
+background-color: transparentize($color: #ffffff, $amount: 1) !important;
+// font-size: 50px;
+// margin-bottom: 5px;
+// color: black;
+}
+
+.item ion-thumbnail {
+    // margin: 20px 20px;
+    width: 100px;    
+    height: 100px;
+    img {
+        width: 100px;    
+        height: 100px;
+    }
+}
+
+.subheader {
+  font-weight: bold;
+  color: Sienna;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.progress-outer {
+    width: 80%;
+    margin: 10px auto;
+    padding: 1px;
+    text-align: center;
+    background-color: #f4f4f4b0;
+    border: .75px solid #dcdcdc;
+    color: #fff;
+    border-radius: 20px;
+  }
+
+  .progress-inner {
+    min-width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 20px;
+    background-color: rgb(238, 150, 68);
+    color: black;
+  }

@@ -1,0 +1,105 @@
+
+<ion-header>
+  <ion-navbar color="light" hideBackButton>
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Crops</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBackground" no-padding>
+ 
+<ion-grid no-padding no-margin>
+  <ion-row>
+    <ion-col col-12 col-md-6 offset-md-3 >
+      
+      <ion-card style="background-color: rgba(250,250,250,0.8); border-radius: 18px">
+          <ion-card-header style="background-color: rgb(121, 179, 6); padding: 6px " text-center>
+            <h2 style="font-weight: bold; color: floralwhite; font-size: 22px;">Greenhouse Layout</h2>
+          </ion-card-header>
+
+          <ion-card-content text-center style="width: 100%; margin: auto">
+
+            <ion-grid no-padding no-margin>
+              <ion-row *ngFor="let row of rows">
+                <ion-col *ngFor="let col of cols">
+                  <ion-card style="background-color: brown;">
+                    <ion-card-header style="background-image: linear-gradient(to right, yellowgreen,rgb(159, 205, 50), rgb(204, 207, 17)); padding: 4px" text-center>
+                      <h2 style="font-weight: bold; color: floralwhite; font-size: 13px; ">{{col}}{{row}}</h2>
+                    </ion-card-header>
+                    <ng-container *ngFor="let plant of plants" (click)="goToAlertModal(plant)">
+                      <ng-container *ngIf="(col + row) === plant.position; else content">
+                        
+                        <ion-card-content style="background-color: black; height: 100px; position: relative;" (click)="goToAlertModal(plant)" no-padding>
+                          <!-- <ion-item no-lines style="border-bottom: none !important;" no> -->
+                          <!-- <div style=""> -->
+                            <img style="opacity: 0.9;"  [src]="plant.image"/>
+                          <!-- </div> -->
+                          <div style="position: absolute; top: 0.5%; left: 2%">
+                          <h2 text-left style="color: white; font-weight: bold; font-size: 20px;">{{plant.name}}({{plant.expectedYeild}})</h2>    
+
+                          <div class="progress-outer" style="margin: 10px auto; position: relative" text-center>
+                            
+                            <div class="progress-inner" [ngStyle]="{'width': plant.progress + '%'}" >
+                              
+                            </div>
+                            <div style="position: absolute; top: 0.1%; left: 33%; font-size: 12px; color: black; font-weight: bold" text-center>{{plant.status}}  {{plant.progress}}% </div>
+                          </div>     
+                        
+                          <div style="background-color: rgba(50,50,50,0.8)">
+                            <ion-grid style="color: white !important" no-padding no-margin>
+                              <ion-row>
+                                <ion-col  text-center>
+                                  <button style="color: lightgray" ion-button icon-start clear no-margin small>
+                                    <ion-icon name="ios-thermometer-outline"></ion-icon>
+                                    <div>{{plant.temp}}</div>
+                                  </button>
+                                </ion-col>
+                                <ion-col text-center>
+                                  <button style="color: lightgray" ion-button icon-start clear no-margin small>
+                                    <ion-icon name="ios-color-fill"></ion-icon>
+                                    <div>{{plant.soil}}</div>
+                                  </button>
+                                </ion-col>
+                                <ion-col  text-center>
+                                  <button style="color: lightgray" ion-button icon-start clear no-margin small>
+                                    <ion-icon name="ios-water"></ion-icon>
+                                    <div>{{plant.humidity}}</div>
+                                  </button>
+                                </ion-col>
+                                <ion-col text-center>
+                                  <button style="color: lightgray" ion-button icon-start clear no-margin small>
+                                    <ion-icon name="ios-sunny"></ion-icon>
+                                    <div>{{plant.solar}}</div>
+                                  </button>
+                                </ion-col>
+
+                              </ion-row>
+                            </ion-grid>
+                          </div>
+                          </div>
+                          <!-- </ion-item> -->
+                        </ion-card-content>
+                      </ng-container>
+                      
+                    </ng-container>
+                    <!-- <ng-template #content>
+                        <ion-card-content>
+                          Add Info
+                        </ion-card-content>
+                        
+                        </ng-template>  -->
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </ion-card-content>
+        </ion-card>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

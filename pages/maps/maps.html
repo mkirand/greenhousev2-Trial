@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>
+      Maps
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: rgba(0, 0, 0, 0.8)" class="homeBackground">
+
+  <ion-grid no-padding no-margin>
+    <ion-row>
+      <ion-col no-padding></ion-col>    
+      <ion-col col-12 col-md-7  no-padding>
+
+        <!-- <ion-card style="background-color: rgb(156, 215, 252); border-radius: 5px; padding: 10px; border: 3px solid white"> -->
+          <!-- </ion-card> -->
+        <hr style="background-color: white; border: 0.1px solid white; width: 60%; margin: 0 auto">
+      </ion-col>
+      <ion-col no-padding></ion-col>
+    </ion-row>
+    <ion-row padding>
+      <ion-col col-12 col-lg-9>
+        <ion-card style="padding: 5px; margin: 10px auto; width: 90%; background-color: #455A64">
+          <div #map id="map"></div>  
+
+
+      <!-- https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjw2MnL9OzfAhWFT30KHTdPDlIQjRx6BAgBEAU&url=https%3A%2F%2Fwww.apk4now.com%2Fapk%2F51939%2Fmap-marker&psig=AOvVaw1yr6Qd6AGppYWJeaV22EyC&ust=1547542866134283 -->
+      <!-- https://cdn3.iconfinder.com/data/icons/map-markers-1/512/plantation-512.png -->
+      <!-- https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Chartreuse.png -->
+      <!-- https://cdn1.iconfinder.com/data/icons/basic-application-vol-1/128/Material_Design-34-512.png -->
+      <!-- https://cdn0.iconfinder.com/data/icons/isometric-farm-buildings/88/mill-512.png -->
+      <!-- style="font-size: 18px" -->
+
+      <!-- [iconUrl]="{                            
+        url: 'https://cdn3.iconfinder.com/data/icons/facebook-ui-flat/48/Facebook_UI-07-256.png', scaledSize: {height: 40,width: 40}, labelOrigin:{x:15,y:50}}" -->
+          <agm-map #gm 
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            [disableDefaultUI]="false"
+            [zoomControl]="false"
+            [fitBounds]="true"
+            (mapClick)="mapClicked($event)">
+
+<!-- [iconUrl]="markerType(g.status)" add to agm-marker to set custome iocn-->
+            <ng-container *ngFor="let g of monitors; let i = index"> 
+            <agm-marker style="font-size: 3px"
+              
+              (markerClick)="clickedMarker(g, i)"
+              [latitude]="+g.gpsLat"
+              [longitude]="+g.gpsLong"
+              [agmFitBounds]="true"
+              (mouseOver)="onMouseOver(infoWindow,gm)" 
+              >
+
+              <agm-info-window style="font-family: georgia" [disableAutoPan]="false" #infoWindow no-padding>
+                <p style="font-size: 12px; font-family: times new roman"><b>{{g.name}} : {{g.status}}</b></p>
+              </agm-info-window >
+
+            </agm-marker>
+            </ng-container>
+          </agm-map>
+        </ion-card>
+      </ion-col>
+
+      <!-- <ion-col col-12 col-lg-3>
+        <ion-row>
+          <ion-card style="background-color: rgba(59,175,191,0.45); color: white" padding>
+            <h1 text-center style="color: white; font-size: 24px">Overview</h1>
+            <hr style="background-color: rgb(59,175,191); height: 3px">
+
+          </ion-card>
+        </ion-row>
+      </ion-col> -->
+    </ion-row>
+
+  
+
+      
+  </ion-grid>
+
+
+</ion-content>

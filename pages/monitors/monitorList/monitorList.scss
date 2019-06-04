@@ -1,0 +1,53 @@
+ion-list.homecard1.list.list-ios, .item-md, .item-ios {
+background-color: transparentize($color: #ffffff, $amount: 1) !important;
+padding-right: none !important;
+border-bottom: none !important;
+// font-size: 50px;
+// margin-bottom: 5px;
+// color: black;
+}
+
+.item ion-thumbnail {
+    // margin: 20px 20px;
+    width: 100px;    
+    height: 100px;
+    img {
+        width: 100px;    
+        height: 100px;
+    }
+}
+
+.subheader {
+  font-weight: bold;
+  color: Sienna;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.buttonList {
+  color: white;
+  width: 100%;
+  border: 0.5px solid black;
+  background-color: rgba(86, 173, 86, 0.815); 
+  padding: 5px
+}
+
+.buttonList:hover {
+  color: white;
+  width: 100%;
+  border: 0.5px solid black;
+  background-color: rgb(10, 167, 10); 
+  // padding: 6px
+}
+
+.infoList {
+  color: white;
+  width: 100%;
+  border: 0.5px solid black;
+  background-color: rgba(192, 192, 192, 0.747); 
+  padding: 5px;
+  // margin: 5px !important;
+}

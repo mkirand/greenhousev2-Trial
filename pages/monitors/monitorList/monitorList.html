@@ -1,0 +1,141 @@
+
+<ion-header>
+
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Greenhouses : {{this.farms.length}}</ion-title>
+      <!-- <div style="display: inline-block; width: 50%; padding-right: 20px"  float-right>
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+      </div> -->
+
+    <!-- <ion-buttons end>
+      <button ion-button (click)="openGoshalafarm()">
+        <ion-icon name="add"></ion-icon>   
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBackground">
+
+<ion-fab bottom right>
+    <button ion-fab mini color="dark" (click)="goToAddVehicle()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-6 offset-md-3>
+        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col no-padding></ion-col>    
+      <ion-col col-12 col-md-10 col-xl-6 no-padding>
+
+  <!-- <ion-card *ngFor="let goshala of goshalas" (click)="goToGoshalaDetailPage(goshala)">
+    <ion-card-content>
+      <ion-card-title>{{goshala.Goshala_Name}}</ion-card-title>
+    </ion-card-content> 
+
+    <img [src]="goshala.Goshala_Image_Path"/>  
+  </ion-card> -->
+
+  <ion-card mode="ios"  style="background-color: rgba(255,255,255, 0.7)" *ngFor="let farm of farms" no-padding >
+
+    <!-- (click)="goToAlertModal(farm)" -->
+
+    <ion-card-header style="background-color: rgb(121, 179, 6); padding: 3px"  no-padding >
+      <ion-grid style="color: white !important" no-padding no-margin>
+        <ion-row no-padding no-margin>
+          <ion-col col-12 col-md-4 col-md-5 col-xl-5 no-margin no-padding>
+            <button style="color: white; font-size: 16px;" icon-start ion-button clear no-margin>
+              <ion-icon name="md-home"></ion-icon>
+              <div >{{farm.name}}</div>
+            </button>
+            
+            </ion-col>
+        </ion-row>
+        <ion-row  style="background-color: yellowgreen;">  
+          <ion-col text-center  no-margin no-padding>
+            <button style="color: floralwhite" ion-button icon-start clear no-margin small>
+              <ion-icon name="ios-thermometer-outline"></ion-icon>
+              <div>{{farm.temp}}</div>
+            </button>
+          </ion-col>
+          <ion-col text-center  no-margin no-padding>
+            <button style="color: floralwhite" ion-button icon-start clear no-margin small>
+              <ion-icon name="ios-color-fill"></ion-icon>
+              <div>{{farm.soil}}</div>
+            </button>
+          </ion-col>
+          <ion-col  text-center  no-margin no-padding>
+            <button style="color: floralwhite" ion-button icon-start clear no-margin small>
+              <ion-icon name="ios-water"></ion-icon>
+              <div>{{farm.humidity}}</div>
+            </button>
+          </ion-col>
+          <ion-col text-center  no-margin no-padding>
+            <button style="color: floralwhite" ion-button icon-start clear no-margin small>
+              <ion-icon name="ios-sunny"></ion-icon>
+              <div>{{farm.solar}}</div>
+            </button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    
+    <ion-item-sliding no-lines>
+      <ion-item style="padding-right: none !important" no-lines>
+        
+        <ion-thumbnail item-start no-padding >
+          <img  [src]="farm.image"
+           onerror="this.src='https://5.imimg.com/data5/KB/DS/MY-69760/magnifying-glass-500x500.jpg';"/>
+          
+        </ion-thumbnail>
+        <!-- <ion-label> -->
+        <div style="font-size: 14.5px;">
+          <!-- <ion-scroll mode="ios" scrollY="true" scrollX="true" style="height: 150px; max-width: 800px"> -->
+        <div>
+        <!-- <h2 style="font-size: 16.5px; margin-bottom: 5px;"><strong>{{farm.unit_name}}</strong> 
+        </h2> -->
+        <!-- <ion-toggle style="float: right" checked="true"></ion-toggle> -->
+        </div>
+        
+        <ion-grid no-padding>
+          <ion-row>
+             <ion-col col-12 col-lg-6 style="padding-right: 15px">
+              <div><span class="subheader">Address:</span> {{farm.locality}}</div>
+              <div><span class="subheader">Crops:</span> {{farm.crops}}</div>
+              <div><span class="subheader">Status:</span> {{farm.status}}</div>
+              <!-- <div><span class="subheader">Client Name:</span> {{farm.Client_Name}}</div> -->
+            </ion-col> 
+          </ion-row>
+        </ion-grid>
+        </div>
+
+      </ion-item>
+      
+      <ion-item-options side="right">  
+	  			<button ion-button color="danger" (click)="deleteGoshala(goshala)">
+	  				<ion-icon name="trash"></ion-icon>	
+	  			</button>			
+	  	</ion-item-options>
+      
+    </ion-item-sliding>
+    
+  </ion-card>
+
+    <!-- <button ion-button color="dark" (click)="goToAddFarmPage()" block>Add Farm</button> -->
+
+
+
+
+      </ion-col>
+      <ion-col no-padding></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

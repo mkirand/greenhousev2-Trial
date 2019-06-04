@@ -1,0 +1,68 @@
+.item-md, .item-ios {
+background-color: transparentize($color: #ffffff, $amount: 1) !important;
+// margin-bottom: 5px;
+// color: black;
+}
+
+.homeBackground {
+
+// background-image: , url('https://www.prestigetoyota-ny.com/assets/misc/5669/600457.png');
+    background-image: radial-gradient( rgba(0, 0, 0, 0.2) 75%,rgba(0, 0, 0, 0.6) 90%), url('https://cdn.pixabay.com/photo/2012/11/07/18/01/paprika-65270_1280.jpg') ;
+
+// https://cdn.pixabay.com/photo/2012/11/07/18/01/paprika-65270_1280.jpg
+
+// https://cdn.wallpapersafari.com/98/93/bQqHai.jpg
+
+// https://images.fineartamerica.com/images-medium-large-5/wild-daisies-in-the-grass-with-a-blue-sky-sandra-cunningham.jpg
+
+// https://png.pngtree.com/thumb_back/fw800/back_pic/04/30/94/935841826b3662b.jpg
+
+// https://previews.123rf.com/images/xuanhuongho/xuanhuongho1312/xuanhuongho131200029/24245761--people-herd-a-flock-of-oxen-cows-and-let-them-graze-grass-on-large-grassland-at-the-hill-in-lam-don.jpg
+
+// https://www.ricecreek.org/vertical/Sites/%7BF68A5205-A996-4208-96B5-2C7263C03AA9%7D/uploads/Grass_and_blue_sky.jpg
+
+    background-size: cover;
+    background-position: 50% 60%;
+
+  }
+
+  @media screen and (max-width: 600px) {
+  ion-tabs {
+    display: none;
+  }
+}
+
+  .farmSegment {
+    // background-color: rgb(143, 183, 40);
+    // background-color: rgb(132, 1, 165);
+    // background-color: green;
+    background-image: linear-gradient(to right, yellowgreen,rgb(159, 205, 50), rgb(204, 207, 17))
+    // background-image: linear-gradient(to bottom right, deepskyblue, darkcyan);
+  }
+
+
+  .homeCard {
+    background:rgba(255,255,255, 0.5);
+    // font-family: "Arial";
+    // margin-bottom: 5px;
+  }
+
+    .homeCard1 {
+    background:rgba(253, 253, 253, 0.5);
+    // color: rgb(121, 179, 6)
+    // font-family: "Arial";
+    // flex-wrap: 20px;
+    // margin-bottom: 5px;
+  }
+
+  .goshalaBtn {
+    background-color: yellowgreen;
+    // text-transform: capitalize;
+    color: white;
+  }
+
+  .goshalaBtn:hover {
+    background-color: rgb(170, 206, 99);
+    // text-transform: capitalize;
+    // color: black;
+  }

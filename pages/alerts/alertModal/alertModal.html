@@ -1,0 +1,184 @@
+
+  <!-- Put your content here -->
+
+<ion-content class="homeBackground">
+
+  <!-- ALERT SEGMENT -->
+  <ion-card style="height: 100%; width: 100%" class="homeCard" no-margin>
+    
+    <!-- ALERT SEGMENT HEADER -->
+
+    <div class="farmSegment" padding text-center>
+      <button style="float: right" color="dark" ion-button clear (click)="dismiss()" icon-only>
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      <div  style="float: left; width: 87%;">
+        <h1 style="font-family: georgia; margin-top: 10px;  color: white" >{{plant.position}} Plot</h1>
+      </div>
+         
+      
+
+      <ion-segment mode="md" [(ngModel)]="alertDashboard" color="light">
+        <ion-segment-button value="info">
+          Plant Info
+        </ion-segment-button>
+        <ion-segment-button value="sensors">
+          Plant Sensors
+        </ion-segment-button>
+        <!-- <ion-segment-button value="command">
+          Commands
+        </ion-segment-button> -->
+      </ion-segment>
+    </div>
+
+    <!-- ALERT SEGMENT CONTENT --> 
+    <div [ngSwitch]="alertDashboard">
+    <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 560px" no-padding no-margin>
+      <!-- VIDEO SEGMENT -->
+      <div *ngSwitchCase="'info'">
+        <ion-grid no-padding no-margin>
+          <ion-row>
+            <ion-col col-4>
+              <ion-card style="margin: 30px 10px 10px 15px; padding: 2px">
+                <img [src]="plant.image"/>
+              </ion-card>
+            </ion-col>
+            <ion-col col-8>
+              <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+                <ion-label stacked>Crop Name</ion-label>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.name" no-padding no-margin ></ion-input>
+              </ion-item>
+              <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+                <ion-label stacked>Position</ion-label>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.position" no-padding no-margin ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row no-margin no-padding>
+            <ion-col col-12 col-md-6>
+              <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+                <ion-label stacked>Planted On</ion-label>
+                <ion-datetime class="selectStyle" displayFormat="DD-MM-YYYY" pickerFormat="D MMM YYYY" [(ngModel)]="plant.plantedOn" ></ion-datetime>
+              </ion-item>
+              <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+                <ion-label stacked>Expected Harvest Date</ion-label>
+                <ion-datetime class="selectStyle" displayFormat="DD-MM-YYYY" pickerFormat="D MMM YYYY" [(ngModel)]="plant.expectedHarvestDate" ></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col col-12 col-md-6>
+              <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+                <ion-label stacked>Expected Harvest Yeild</ion-label>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.expectedYeild" no-padding no-margin ></ion-input>
+              </ion-item>
+              <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+                <ion-label stacked>Planted Area</ion-label>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.plantedArea" no-padding no-margin ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+
+              <ion-card class="homeCard" style="width: 85%; margin: 20px auto; border-radius; border-radius: 10px" text-center padding>
+                <h2 text-center style="font-size: 18px; font-weight: bold; margin: 0px auto 15px auto">Crop Growth Progress</h2>
+                <div class="progress-outer" style="margin: 10px auto; position: relative" text-center>   
+                  <div class="progress-inner" [ngStyle]="{'width': plant.progress + '%'}" >
+                  </div>
+                  <div style="position: absolute; top: 0.1%; left: 40%; font-size: 12px; color: black; font-weight: bold" text-center>{{plant.status}}  {{plant.progress}}% </div>
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <circle-progress
+  [percent]="85"
+  [radius]="100"
+  [outerStrokeWidth]="16"
+  [innerStrokeWidth]="8"
+  [outerStrokeColor]="'#78C000'"
+  [innerStrokeColor]="'#C7E596'"
+  [animation]="true"
+  [animationDuration]="300"
+></circle-progress> -->
+        
+        <!-- <ion-card-content> -->
+        
+          <!-- <div text-center>
+
+            <ion-item no-lines no-margin no-padding style="width: 90%; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
+              <ion-textarea  class="textareaStyle" [(ngModel)]="alert.comments" no-padding no-margin placeholder="Comments..."></ion-textarea>
+            </ion-item>
+
+            <button ion-button style="background-color: #32CD32; margin-top: 10px" icon-start (click)="updateAlertStatus('Accepted', alert)">
+              <ion-icon name="md-checkmark"></ion-icon>
+              Accept
+            </button>
+            <button ion-button style="background-color: orange; margin-top: 10px" icon-start (click)="updateAlertStatus('Investigate', alert)">
+              <ion-icon name="md-eye"></ion-icon>
+              Investigate
+            </button>
+            <button ion-button color="danger" style="margin-top: 10px" icon-start (click)="updateAlertStatus('Rejected', alert)">
+              <ion-icon name="md-close" ></ion-icon>
+              Reject
+            </button>
+          </div> -->
+         
+
+      </div>
+
+      <!-- PICTURE SEGMENT-->
+
+      <div *ngSwitchCase="'sensors'">
+        <ion-card style="background-color: rgba(250,250,250,0.8); border-radius: 15px">
+          <ion-card-header style="background-image: linear-gradient(to right, yellowgreen,rgb(159, 205, 50), rgb(204, 207, 17)); padding: 6px" text-center>
+            <h2 style="font-weight: bold; color: floralwhite; font-size: 18px; ">Plant Environment</h2>
+          </ion-card-header>
+
+          <ion-card-content text-center style="width: 65%; margin: auto" padding>
+            <ion-item style="font-size: 16px !important">
+              <ion-label class="fixedLabel" fixed>
+                <ion-icon style="color: red; zoom: 1.0;" icon-start name="ios-thermometer-outline">   </ion-icon>
+                Temperature
+              </ion-label>
+              <ion-input [(ngModel)]="plant.temp"></ion-input>
+            </ion-item>
+            <ion-item style="font-size: 16px !important">
+              <ion-label class="fixedLabel" fixed>
+                
+                <ion-icon style="color: green; zoom: 1.0;" icon-start name="ios-color-fill">   </ion-icon>
+                Soil Moisture
+              </ion-label>
+              <ion-input [(ngModel)]="plant.soil"></ion-input>
+            </ion-item>
+            <ion-item style="font-size: 16px !important">
+              <ion-label class="fixedLabel" fixed>
+                
+                <ion-icon style="color: royalblue" icon-start name="ios-water">   </ion-icon>
+                Humidity
+              </ion-label>
+              <ion-input [(ngModel)]="plant.humidity"></ion-input>
+            </ion-item>
+            <ion-item style="font-size: 16px !important">
+              <ion-label class="fixedLabel" fixed>
+                
+                <ion-icon style="color: orange" icon-start name="ios-sunny">   </ion-icon>
+                Solar Radiation
+              </ion-label>
+              <ion-input [(ngModel)]="plant.solar"></ion-input>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      
+      <!-- COMMAND SEGMENT -->
+      <div *ngSwitchCase="'command'">
+          
+      </div>
+    </ion-scroll>
+    </div>
+
+  </ion-card>
+
+</ion-content>
+
+<!-- <ion-footer text-center style="background-color: #455A64; height: 70px; padding: 10px; font-weight: bold; font-size: 30px;"></ion-footer> -->

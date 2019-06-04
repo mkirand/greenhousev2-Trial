@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title style="color: red; font-family: 'Fredericka the Great', cursive;"><em style="padding-bottom: 12px">Greenhouse V.1.0</em></ion-title>
+    <ion-buttons end>
+      <!-- <button color="dark" ion-button icon-only (click)="goToLoginPage()">
+        <ion-icon name="ios-contact"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBackground">
+
+   <div style="margin: 40px auto;" text-center>
+      <ion-icon name="md-home" style="font-size: 45px; zoom: 2.0; margin: 0 auto; color: yellowgreen; text-shadow: 1px 1px black" icon-only no-padding no-margin></ion-icon>
+      <!-- <img style="width: 220px; text-shadow: 2px 5px black;" src="https://cdn1.iconfinder.com/data/icons/ecology-34/512/z27_14-512.png"/> -->
+      <!-- https://mastergolflivestream.com/images/clipart-vegetables-transparent-background-5.png -->
+      <!-- https://cdn1.iconfinder.com/data/icons/ecology-34/512/z27_14-512.png -->
+
+      <h2 style=" color: floralwhite; font-weight: bold; font-size: 45px; text-shadow: 2px 1px black; margin-bottom: 1px" no-margin no-padding>Greenhouse</h2>
+      <h2 style=" color: floralwhite; font-weight: bold; font-size: 20px; text-shadow: 2px 1px black;" no-margin no-padding>Version 1.0</h2>
+    </div>
+
+<ion-grid style="margin-top: 30px">
+  <ion-row>
+    <ion-col col-12 col-md-6 col-xl-4 offset-md-3 offset-xl-4>
+
+      <ion-card class="homeCard" style="border-radius: 5px" no-padding>
+        <h1 style="font-size: 25px; padding: 10px; background-color: yellowgreen; color: white" text-center no-margin>Welcome</h1>
+
+        <div style="color: black" padding no-margin>
+        <ion-item color="dark" style="border-bottom: none !important" no-margin no-padding no-lines>
+          <ion-label color="dark" floating no-margin>Username</ion-label>
+          <ion-input color="dark" value="" type="text" [(ngModel)]="user.username" ></ion-input>
+        </ion-item>
+        <hr>
+        <ion-item style="border-bottom: none !important" no-margin no-padding no-lines>
+          <ion-label color="dark" floating>Password</ion-label>
+          <ion-input type="password" value="" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <hr>
+        <div style="width: 40%; margin: 15px auto" text-center>
+        <button  color="dark" class="goshalaBtn" ion-button block (click)="handleLogin(user)" round>Log In</button>
+        </div>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+</ion-content>

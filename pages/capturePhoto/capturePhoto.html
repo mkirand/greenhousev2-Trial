@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Capture Photo of {{user.full_name}} {{user.surname}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBackground">
+
+<div *ngIf="photoMethod === undefined" style="margin: 120px auto; max-width: 500px; padding: 20px" text-center>
+  <ion-item no-lines style="border-bottom: none !important">
+  <ion-avatar>
+    <img *ngIf="this.myApp.user.full_name" style="width: 250px; height: 250px; border: lightgray solid 5px; margin: auto" [src]="'https://www.dev-x.co.za/Projects/PhoenixInstruments/BirdScanner/webApp/uploads/' + user.profilepic + '?time=' + user.u_imageTimeStamp.substr(user.u_imageTimeStamp.length - 8)"
+        onerror="this.src='https://paradisevalleychristian.org/wp-content/uploads/2017/01/Blank-Profile.png'">
+  </ion-avatar>
+  </ion-item>
+  <ion-grid style="margin-top: 7%">
+  <ion-row>
+    <ion-col col-10 offset-1>
+      <ion-grid>
+        <ion-row>
+          <!-- <ion-col>
+          </ion-col> -->
+          <ion-col col-6 text-center (click)="choosePhotoType('capture')">
+            <ion-card class="ypBtns">
+              <ion-icon name="ios-camera" style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Capture</div>
+            </ion-card>
+          </ion-col>
+          <ion-col col-6 text-center (click)="choosePhotoType('upload')">
+            <ion-card class="ypBtns">
+              <ion-icon name="ios-folder-open" style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Browse</div>
+            </ion-card>
+          </ion-col>
+          <!-- <ion-col col-4 text-center>
+            <div class="ypBtns">
+              <ion-icon name="ios-home" style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Residents</div>
+            </div>
+          </ion-col> -->
+          <!-- <ion-col></ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+  <!-- <button ion-button color="dark" class="goshalaBtn" style="margin-bottom: 40px" (click)="choosePhotoType('capture')" block>Capture Photo</button>
+
+  <button ion-button color="dark" class="goshalaBtn" (click)="choosePhotoType('upload')" block>Upload Photo</button> -->
+</div>
+
+  <div *ngIf="!selectedImage && photoMethod === 'upload'">
+    <ion-grid>
+      <ion-col col-12 col-md-6 offset-md-3>
+        <file-dropzone (drop)="selectedImage = $event"></file-dropzone>
+      </ion-col>
+    </ion-grid>
+  </div>
+  <div *ngIf="selectedImage" style="max-width: 600px; margin: 20px auto" text-center> 
+  <ion-card   style="padding: 10px" class="homeCard">
+  <h2  style="padding: 10px; font-weight: bold" text-center>Captured Image</h2>
+  <!-- <h2>Nice one!</h2> -->
+  <!-- <img [src]="webcamImage.imageAsDataUrl"/> -->
+  
+    <image-cropper
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1 / 1"
+        format="jpeg"
+        *ngIf="selectedImage"
+        [imageBase64]="selectedImage"
+        (imageCropped)="imageCropped($event)">
+        </image-cropper>
+
+        <!-- <img [src]="croppedImage" /> -->
+  </ion-card>
+  <button ion-button class="goshalaBtn" *ngIf="croppedImage"  (click)="reloadPage(cow)">Retake Image</button>
+  <button ion-button class="goshalaBtn" *ngIf="croppedImage"  (click)="send()">Upload Image</button>
+  </div>
+
+
+<div *ngIf="!webcamImage && photoMethod === 'capture'" style="text-align:center">
+	<ion-card class="homeCard" style="padding: 10px">
+		<webcam [height]="600" [width]="280" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+		 [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+		 (initError)="handleInitError($event)"></webcam>
+		<!-- <br/> -->
+   
+    <!-- <ion-item>
+      <ion-label>Camera On/Off</ion-label>
+      <ion-toggle checked="toggleWebcam();"></ion-toggle>
+    </ion-item> -->
+    <!-- <br/> -->
+    
+    <!-- <button class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable" >Next Webcam</button> -->
+    <!-- <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"><label for="cameraSwitchCheckbox">Allow Camera Switch</label> -->
+    <!-- <br/> -->
+    <!-- DeviceId: <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px"> -->
+    <!-- <button ion-button (click)="showNextWebcam(deviceId);">Activate</button> -->
+  </ion-card>
+   <button ion-button style="margin-top: 10px" class="goshalaBtn" (click)="triggerSnapshot();" icon-start>
+      <ion-icon name="ios-camera"></ion-icon>Take A Snapshot
+    </button>
+</div>
+  <div *ngIf="webcamImage" text-center> 
+  <ion-card   style="padding: 10px" class="homeCard">
+  <h2  style="padding: 10px; font-weight: bold" text-center>Captured Image</h2>
+  <!-- <h2>Nice one!</h2> -->
+  <!-- <img [src]="webcamImage.imageAsDataUrl"/> -->
+  
+    <image-cropper
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1 / 1"
+        format="jpeg"
+        *ngIf="webcamImage.imageAsDataUrl"
+        [imageBase64]="webcamImage.imageAsDataUrl"
+        (imageCropped)="imageCropped($event)">
+        </image-cropper>
+  </ion-card>
+  <button ion-button class="goshalaBtn" *ngIf="croppedImage"  (click)="reloadPage(cow)">Retake Image</button>
+  <button ion-button class="goshalaBtn" *ngIf="croppedImage"  (click)="send()">Upload Image</button>
+  </div>
+  
+  <!-- <ion-card class="homeCard" padding text-center> -->
+    <!-- <h2 style="padding: 10px; font-weight: bold" text-center>Cropped Image</h2>
+    <img *ngIf="croppedImage" [src]="croppedImage" /> -->
+    <!-- <br> -->
+
+  <!-- </ion-card> -->
+
+
+
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-menu persistent="true"  [content]="content" (ionClose)="collapseMenuOptions()">
+	<ion-header>
+		<!-- <ion-toolbar color="dark"> -->
+			<!-- <ion-title>{{ (sideMenuSettings.accordionMode ? '' : 'Default') + ' Menu' }}</ion-title> -->
+      
+		<!-- </ion-toolbar> -->
+    <!-- <div style="margin: 1px; border: 3px solid lightgray"> -->
+    <ion-item  color="light">
+        <ion-avatar item-start (click)="goToCapturePhotoPage()">
+        <img *ngIf="this.myApp.user.full_name" style="width: 70px; height: 70px; border: lightgray solid 5px" [src]="'https://www.dev-x.co.za/Projects/PhoenixInstruments/BirdScanner/webApp/uploads/' + this.myApp.user.profilepic + '?time=' + this.myApp.user.u_imageTimeStamp.substr(this.myApp.user.u_imageTimeStamp.length - 8)"
+        onerror="this.src='https://paradisevalleychristian.org/wp-content/uploads/2017/01/Blank-Profile.png'"></ion-avatar>
+        <h3 style="margin-bottom: 8px" *ngIf="this.myApp.user.full_name"> {{this.myApp.user.full_name}} {{this.myApp.user.surname}}</h3>
+        <h5 style="font-size: 12px; color: gray; text-transform: capitalize">Role: {{this.myApp.user.u_role}}</h5>
+        <h5 style="font-size: 12px; color: gray">Email: {{this.myApp.user.u_email}}</h5>
+        <h5 style="font-size: 12px; color: gray">Contact: <span style="font-size: 12px">{{this.myApp.user.u_contact}}</span></h5>
+      </ion-item>
+      <!-- </div> -->
+	</ion-header>
+
+	<ion-content >
+
+		<!-- Side Menu -->
+		<side-menu-content [settings]="sideMenuSettings" [options]="options" (selectOption)="selectOption($event)"></side-menu-content>
+
+	</ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav  hideBackButton="true" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

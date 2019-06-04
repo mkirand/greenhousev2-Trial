@@ -1,0 +1,42 @@
+.item-md, .item-ios {
+background-color: transparentize($color: #ffffff, $amount: 1) !important;
+// margin-bottom: 5px;
+// color: black;
+}
+
+.ypBtns {
+  background-color: rgba(200, 200, 250, 0.4); 
+  // margin: 5px; 
+  border-radius: 5px;
+  height: 85px;
+  // width: 85px;
+  padding: 8px;
+  // color: rgb(207, 123, 19);
+  // color: purple;
+  // color: white;
+    color: floralwhite;
+  // color: rgb(209, 167, 88);
+  // color: rgb(201, 183, 158);
+  // color: rgb(240, 232, 212);
+  // font-size: 15px;
+  // border: 2px ridge black;
+}
+
+.ypBtns:hover {
+  background-color: rgba(216, 226, 218, 0.4); 
+  // margin: 5px; 
+  border-radius: 5px;
+  padding: 8px;
+  // color: lightgray;
+}
+
+ .ypTags {
+  //  color: blanchedalmond; 
+  //  color: rgb(201, 183, 158);
+   font-size: 12px;
+  //  font-weight: bold;
+ }
+
+ .ypTags:hover {
+  //  color: rgb(135, 222, 200);
+ }

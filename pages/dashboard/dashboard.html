@@ -1,0 +1,108 @@
+<ion-header>
+   <!-- <ion-toolbar color="secondary" style="background-color: red !important"> -->
+  <ion-navbar  color="light"  hideBackButton="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="color: red; font-family: 'Fredericka the Great', cursive;"><em style="padding-bottom: 12px">Greenhouse V.1.0</em></ion-title>
+    <ion-buttons end>
+      <button color="dark" ion-button icon-only (click)="goToLoginPage()">
+        <ion-icon name="ios-contact"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <span style="margin-left: 50%">Mkdljf</span> -->
+  </ion-navbar>
+<!-- </ion-toolbar> -->
+</ion-header>
+
+<ion-content class="homeBackground">
+
+
+
+<!-- <ion-slides style="max-width: 880px; height: 250px; margin: 0 auto" pager autoplay=3000 effect="fade" speed=2000 loop=true>
+  <ion-slide> -->
+    <!-- <ion-card style="width: 95%; margin: 0 auto; height: 200px; background-color: rgba(250,250,250,0.1); border-radius: 30px;" padding> -->
+      <!-- <h2 style="font-family: 'Slabo 27px', serif; font-size: 40px; font-weight: regular 400; color: rgb(222, 198, 233)" text-center>The Bird Eye App</h2> -->
+      <!-- <h2 style="font-family: 'Fredericka the Great', cursive; font-size: 25px; color: rgb(222, 198, 233)" text-center>Fleet Statistics</h2> -->
+      <!-- <hr style="height: 0.5px; background-color: rgb(222, 198, 233)"> -->
+    <!-- </ion-card> -->
+  <!-- </ion-slide>
+</ion-slides> -->
+
+    <!-- <ion-item no-lines style="border: none !important">  
+      <ion-avatar no-lines>
+        <img no-lines style="border: 8px solid beige; height: 200px; width: 200px; margin: 20px auto" src="https://cdn.pixabay.com/photo/2016/11/23/18/27/hummingbird-1854225__340.jpg"/>
+      </ion-avatar>
+    </ion-item> -->
+    <div style="margin: 80px auto 0 auto;" text-center>
+      <ion-icon name="md-home" style="font-size: 45px; zoom: 3.0; margin: 0 auto; color: yellowgreen; text-shadow: 1px 1px black" icon-only no-padding no-margin></ion-icon>
+      <!-- <img style="width: 220px; text-shadow: 2px 5px black;" src="https://cdn1.iconfinder.com/data/icons/ecology-34/512/z27_14-512.png"/> -->
+      <!-- https://mastergolflivestream.com/images/clipart-vegetables-transparent-background-5.png -->
+      <!-- https://cdn1.iconfinder.com/data/icons/ecology-34/512/z27_14-512.png -->
+
+      <h2 style=" color: floralwhite; font-weight: bold; font-size: 45px; text-shadow: 2px 1px black; margin-bottom: 1px" no-margin no-padding>Greenhouse</h2>
+      <h2 style=" color: floralwhite; font-weight: bold; font-size: 20px; text-shadow: 2px 1px black;" no-margin no-padding>Version 1.0</h2>
+    </div>
+
+<ion-grid style="margin-top: 10px">
+  <ion-row>
+
+    <ion-col col-12 col-sm-10  col-md-8 col-lg-4 offset-sm-1 offset-md-2 offset-lg-4>
+      <ion-grid  no-margin>
+        <ion-row>
+          <!-- <ion-col>
+          </ion-col> -->
+          <ion-col col-4  text-center (click)="goToStatsPage()">
+            <ion-card class="ypBtns" no-margin>
+              <ion-icon name="ios-thermometer-outline" style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Temperature</div>
+              <div class="ypfigs">45C</div>
+            </ion-card>
+          </ion-col>
+          <ion-col col-4 text-center (click)="goToDepartmentsListPage()">
+            <ion-card class="ypBtns"no-margin>
+              <ion-icon name="ios-color-fill"  style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Root Moisture</div>
+              <div class="ypfigs">150mm</div>
+            </ion-card>
+          </ion-col>
+          <ion-col col-4 text-center>
+            <ion-card class="ypBtns" no-margin>
+              <ion-icon name="ios-water"  style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Humidity</div>
+              <div class="ypfigs">60%</div>
+            </ion-card>
+          </ion-col>
+          <!-- <ion-col></ion-col> -->
+        </ion-row>
+        <ion-row>
+          <!-- <ion-col></ion-col> -->
+          <ion-col col-4 text-center (click)="goToServicesListPage()">
+            <ion-card class="ypBtns" no-margin>
+              <ion-icon name="ios-sunny" style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Lighting</div>
+              <div class="ypfigs">40lux</div>
+            </ion-card>
+          </ion-col>
+          <ion-col col-4 text-center>
+            <ion-card class="ypBtns" no-margin>
+              <ion-icon name="ios-flash"  style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">Energy Use</div>
+              <div class="ypfigs">931kWh</div>
+            </ion-card>
+          </ion-col>
+          <ion-col col-4 text-center>
+            <ion-card class="ypBtns" no-margin>
+              <ion-icon name="ios-bonfire" style="zoom:3.0;"></ion-icon>
+              <div class="ypTags">CO2</div>
+              <div class="ypfigs">350ppm</div>
+            </ion-card>
+          </ion-col>
+          <!-- <ion-col></ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

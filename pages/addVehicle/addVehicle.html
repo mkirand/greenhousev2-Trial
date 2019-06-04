@@ -1,0 +1,374 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>{{fleet.makeModel}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="homeBackground">
+
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col no-padding></ion-col>    
+      <ion-col  col-12 col-md-10 no-padding>
+
+      <!-- <ion-card class="homeCard"> -->
+        
+        <!-- <h1 style="font-family: georgia; margin: 10px;" text-center>{{fleet.name}} Details</h1> -->
+        <!-- <hr> -->
+
+      <ion-card *ngIf="fleet.id"  class="homeCard1" style="width: 90%; margin: 0 auto; margin-top: 25%">
+        <ion-card-header text-center style="font-weight: bold"> Upload Vehicle Photos</ion-card-header>
+        <ion-item>
+          <ion-label stacked>Choose Vehicle View</ion-label>
+          <ion-select class="selectStyle" [(ngModel)]="fleetView.category">
+            <ion-option value="Front">Front</ion-option>
+            <ion-option value="Rear">Rear</ion-option>
+          </ion-select>
+        </ion-item>
+        <!-- <img [src]="'https://www.dev-x.co.za/MayapurIT/Fleet/uploads/'+ fleet.pic1 + '?time=' + fleet.imageTimeStamp.substr(fleet.imageTimeStamp.length - 8)"/> -->
+        <div text-center padding>
+          <button ion-button color="dark" small icon-start (click)="goToCapturePhotoPage(fleet)">
+          <ion-icon name="camera"></ion-icon>
+          Capture Photo
+          </button>
+        </div>
+      </ion-card>
+
+      <ion-grid *ngIf="fleetImages !== undefined">
+      <ion-row>
+        <ion-col>
+          <h2 style="font-family: georgia; margin: 10px; font-size: 20px; color: white">Vehicle Photos</h2>
+          <hr>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 col-md-6 *ngFor="let image of fleetImages">
+          <ion-card class="homeCard" style="width: 100%" >
+            <ion-card-header text-center style="font-weight: bold"> {{image.category}} View</ion-card-header>
+            <img [src]="'https://www.dev-x.co.za/MayapurIT/Fleet/uploads/'+ image.imageName + '?time=' + image.imageTimeStamp.substr(image.imageTimeStamp.length - 8)"/>
+            <div text-center padding>
+              <button ion-button color="dark" small icon-start (click)="goToCapturePhotoPage(image.imageName,fleet,image.category)">
+              <ion-icon name="camera"></ion-icon>
+              Update Photo
+              </button>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+
+
+
+        <!-- fleet SEGMENT -->
+        <ion-card *ngIf="!fleet.id" class="homeCard" style="margin-top: 20px">
+          
+          <!-- fleet SEGMENT HEADER -->
+
+          <div class="farmSegment" padding>
+            <h1 style="font-family: georgia; margin: 10px; color: white" text-center>{{fleet.name}} Details</h1>
+            <ion-segment mode="md" [(ngModel)]="fleetDashboard" color="light">
+              <ion-segment-button value="verify">
+                Verify
+              </ion-segment-button>
+              <ion-segment-button value="info">
+                Info
+              </ion-segment-button>
+              <ion-segment-button value="cost">
+                Cost
+              </ion-segment-button>
+              <ion-segment-button value="condition">
+                Condition
+              </ion-segment-button>
+
+            </ion-segment>
+          </div>
+
+          <!-- FARM SEGMENT CONTENT -->
+          <div [ngSwitch]="fleetDashboard">
+
+<!-- https://dev-x.co.za/MayapurIT/Goshala/fleet_icon.jpg -->
+            <!-- PROFILE SEGMENT -->
+            <div *ngSwitchCase="'verify'">
+
+              <!-- <h2 style="font-family: georgia; margin: 12px; font-weight: bold">General Information</h2> -->
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12 col-md-4>
+                    <ion-item id="rounded">
+                      <ion-label stacked>Verifier</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.verifier" no-padding no-margin></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Verification Date</ion-label>
+                      <ion-datetime class="selectStyle" displayFormat="YYYY-MM-DD HH:mm:ss" pickerFormat="D MMM YYYY HH:mm:ss" [(ngModel)]="fleet.verificationDate" ></ion-datetime>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Asset Location</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.assetLocation" no-padding no-margin></ion-input>
+                      <!-- <ion-select class="selectStyle" [(ngModel)]="fleet.gender" (ionChange)="cdr.detectChanges()">
+                        <ion-option value="M">Male</ion-option>
+                        <ion-option value="F">Female</ion-option>
+                        <ion-option value="Ox">Ox</ion-option>
+                      </ion-select> -->
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-4 offset-md-2>
+                    <ion-item>
+                      <ion-label stacked>GPS</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.GPS" no-padding no-margin></ion-input>
+                      <!-- <ion-select class="selectStyle" [(ngModel)]="fleet.GPS">
+                        <ion-option value="fleet">fleet</ion-option>
+                        <ion-option value="Bullock">Bullock</ion-option>
+                        <ion-option value="Heifer">Heifer</ion-option>
+                      </ion-select> -->
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Cliet Representative (Onsite)</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.clientRep"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  
+                </ion-row>
+              </ion-grid>
+            </div>
+
+            <!-- INFO SEGMENT-->
+
+            <div *ngSwitchCase="'info'">
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <h2 style="font-family: georgia; margin: 10px; font-size: 20px">Vehicle Info</h2>
+                    <hr>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-4>
+                    <ion-item id="rounded">
+                      <ion-label stacked>Registration Number</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.regNo" no-padding no-margin></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Chassis</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.chassis" no-padding no-margin></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Make & Model</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.makeModel" no-padding no-margin></ion-input>
+                      <!-- <ion-select class="selectStyle" [(ngModel)]="fleet.gender" (ionChange)="cdr.detectChanges()">
+                        <ion-option value="M">Male</ion-option>
+                        <ion-option value="F">Female</ion-option>
+                        <ion-option value="Ox">Ox</ion-option>
+                      </ion-select> -->
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-4 >
+                    <ion-item>
+                      <ion-label stacked>Date Of Acquisition</ion-label>
+                      <ion-datetime class="selectStyle" displayFormat="D MMM YYYY" pickerFormat="D MMM YYYY" [(ngModel)]="fleet.dateOfAcqu" ></ion-datetime>
+                      <!-- <ion-select class="selectStyle" [(ngModel)]="fleet.GPS">
+                        <ion-option value="fleet">fleet</ion-option>
+                        <ion-option value="Bullock">Bullock</ion-option>
+                        <ion-option value="Heifer">Heifer</ion-option>
+                      </ion-select> -->
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>MM Code</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.mmCode"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Model Year</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.modelYear"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+            
+            <!-- COST SEGMENT -->
+            <div *ngSwitchCase="'cost'">
+               <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <h2 style="font-family: georgia; margin: 10px; font-size: 20px">Cost Info</h2>
+                    <hr>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-4>
+                    <ion-item id="rounded">
+                      <ion-label stacked>Cost of Vehicle</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.vehicleCost" no-padding no-margin></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Book Value</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.bookValue" no-padding no-margin></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Residual Value</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.residualValue" no-padding no-margin></ion-input>
+                      <!-- <ion-select class="selectStyle" [(ngModel)]="fleet.gender" (ionChange)="cdr.detectChanges()">
+                        <ion-option value="M">Male</ion-option>
+                        <ion-option value="F">Female</ion-option>
+                        <ion-option value="Ox">Ox</ion-option>
+                      </ion-select> -->
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+
+              <!-- CONDITION SEGMENT -->
+            <div *ngSwitchCase="'condition'">
+               <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <h2 style="font-family: georgia; margin: 10px; font-size: 20px">Vehicle Condition</h2>
+                    <hr>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-4>
+                    <ion-item id="rounded">
+                      <ion-label stacked>Body</ion-label>
+                      <ion-select class="selectStyle" [(ngModel)]="fleet.bodyCondition">
+                        <ion-option value="Good">Good</ion-option>
+                        <ion-option value="Fair">Fair</ion-option>
+                        <ion-option value="Poor">Poor</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Engine</ion-label>
+                      <ion-select class="selectStyle" [(ngModel)]="fleet.engineCondition">
+                        <ion-option value="Good">Good</ion-option>
+                        <ion-option value="Fair">Fair</ion-option>
+                        <ion-option value="Poor">Poor</ion-option>
+                        <ion-option value="Non-Runner">Non-Runner</ion-option>
+                        <ion-option value="Does Not Start">Does Not Start</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Tyres</ion-label>
+                      <ion-select class="selectStyle" [(ngModel)]="fleet.tyreCondition">
+                        <ion-option value="Good">Good</ion-option>
+                        <ion-option value="Fair">Fair</ion-option>
+                        <ion-option value="Poor">Poor</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-4 offset-md-2>
+                    <ion-item>
+                      <ion-label stacked>Wind Screen</ion-label>
+                      <ion-select class="selectStyle" [(ngModel)]="fleet.windscreenCondition">
+                        <ion-option value="Good">Good</ion-option>
+                        <ion-option value="Fair">Fair</ion-option>
+                        <ion-option value="Poor">Poor</ion-option>
+                        <ion-option value="Cracked">Cracked</ion-option>
+                        <ion-option value="Stone Chip">Stone Chip</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-12 col-md-4>
+                    <ion-item>
+                      <ion-label stacked>Ancillaries</ion-label>
+                      <ion-input class="inputStyle" [(ngModel)]="fleet.Ancillaries"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-10 offset-md-1 >
+                    <ion-item>
+                      <ion-label stacked>Other Comments</ion-label>
+                      <ion-textarea class="textareaStyle" type="text" [(ngModel)]="fleet.comments"></ion-textarea>
+                      <!-- <ion-select class="selectStyle" [(ngModel)]="fleet.GPS">
+                        <ion-option value="fleet">fleet</ion-option>
+                        <ion-option value="Bullock">Bullock</ion-option>
+                        <ion-option value="Heifer">Heifer</ion-option>
+                      </ion-select> -->
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <!-- <ion-row>
+                  <ion-col>
+                    <h2 style="font-family: georgia; margin: 10px; font-size: 20px">Vehicle Photos</h2>
+                    <hr>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-md-5 offset-md-1>
+                    <ion-card class="homeCard" style="width: 100%">
+                      <ion-card-header text-center style="font-weight: bold"> Front View</ion-card-header>
+                      <img [src]="'https://www.dev-x.co.za/MayapurIT/Fleet/uploads/'+ fleet.pic1 + '?time=' + fleet.imageTimeStamp.substr(fleet.imageTimeStamp.length - 8)"/>
+                      <div text-center padding>
+                        <button ion-button color="dark" small icon-start (click)="goToCapturePhotoPage(fleet.pic1,fleet,'pic1')">
+                        <ion-icon name="camera"></ion-icon>
+                        Capture Photo
+                        </button>
+                      </div>
+                    </ion-card>
+                  </ion-col>
+                  <ion-col col-12 col-md-5>
+                    <ion-card class="homeCard" style="width: 100%">
+                      <ion-card-header text-center style="font-weight: bold"> Rear View</ion-card-header>
+                      <img [src]="'https://www.dev-x.co.za/MayapurIT/Fleet/uploads/'+ fleet.pic2  + '?time=' + fleet.imageTimeStamp.substr(fleet.imageTimeStamp.length - 8)"/>
+                      <div text-center padding>
+                        <button ion-button color="dark" small icon-start (click)="goToCapturePhotoPage(fleet.pic2,fleet,'pic2')">
+                         <ion-icon name="camera"></ion-icon>
+                         Capture Photo
+                         </button>
+                      </div>
+                    </ion-card>
+                  </ion-col>
+                </ion-row> -->
+              </ion-grid>
+            </div>
+          </div>
+
+        </ion-card>
+
+      <!-- </ion-card> -->
+      <div *ngIf="!fleet.id" text-center>
+      <button style="width: 40%" ion-button color="dark" (click)="addfleet(fleet)" round>
+        Submit
+      </button>                
+      </div>
+      </ion-col>
+      <ion-col no-padding></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

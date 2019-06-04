@@ -1,0 +1,19 @@
+<div  class="dropzone" [ngxFileDropzone]="readMode" (fileDrop)="addFile($event)">
+  <ng-content></ng-content>
+
+  <p style="font-size: 18px" *ngIf="!hidePhrase">
+    Drop image here or click to pick a file
+  </p>
+
+  <button ion-button class="goshalaBtn" (click)="button.click()"
+    #button
+    type="button" 
+    ngxFilePicker
+    accept="image/*" 
+    (readStart)="reading = true" 
+    (filePick)="addFile($event)"
+    (readEnd)="reading = false">
+    Browse Picture
+  </button>
+
+</div>

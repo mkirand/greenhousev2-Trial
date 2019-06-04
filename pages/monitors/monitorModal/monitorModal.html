@@ -1,0 +1,242 @@
+
+<ion-content  class="homeBackground">
+           
+  <!-- MONITOR SEGMENT -->
+  <ion-card style="height: 100%; width: 100%" class="homeCard" no-margin>
+    
+    <!-- MONITOR SEGMENT HEADER -->
+
+    <div class="farmSegment" padding>
+      <button style="float: right" color="dark" ion-button clear (click)="dismiss()" icon-only>
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      <div text-left style="float: left; width: 87%;">
+        <h1 style="font-family: georgia; margin-top: 10px;  color: white" text-center>{{monitor.unit_name}} Details</h1>
+      </div>
+         
+      
+
+      <ion-segment mode="md" [(ngModel)]="monitorDashboard" color="light">
+        <ion-segment-button value="map">
+          Map
+        </ion-segment-button>
+        <ion-segment-button value="parameter">
+          Parameters
+        </ion-segment-button>
+        <ion-segment-button value="report">
+          Reports
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <!-- FARM SEGMENT CONTENT -->
+    <div [ngSwitch]="monitorDashboard">
+
+      <div *ngSwitchCase="'map'">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2 style="font-family: georgia; margin: 10px; font-size: 20px">{{monitor.unit_name}} Location</h2>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <ion-card style="padding: 5px; width: 100%; margin: 0 auto">
+              <div #map id="map"></div>  
+
+              <agm-map 
+                [latitude]="+monitor.GPS_Lat"
+                [longitude]="+monitor.GPS_Long"
+                [zoom]="zoom"
+                [disableDefaultUI]="false"
+                [zoomControl]="false"
+                (mapClick)="mapClicked($event)">
+
+                <agm-marker 
+                    (markerClick)="clickedMarker(monitor)"
+                    [latitude]="+monitor.GPS_Lat"
+                    [longitude]="+monitor.GPS_Long"
+                    [label]="monitor.unit_name"
+                    (dragEnd)="markerDragEnd(m, $event)">
+                    
+                  <!-- <agm-info-window>
+                    <strong>InfoWindow content</strong>
+                  </agm-info-window> -->
+                </agm-marker>
+                
+                <!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
+                    [radius]="5000"
+                    [fillColor]="'red'"
+                    [circleDraggable]="true"
+                    [editable]="true">
+                </agm-circle> -->
+              </agm-map>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          
+        </ion-grid>
+      </div>
+
+      <!-- PICTURE SEGMENT-->
+
+      <div *ngSwitchCase="'parameter'">
+        <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 480px" no-padding no-margin>
+        <ion-grid style="margin-bottom: 20px" no-padding no-margin>
+          <ion-row>
+            <ion-col>
+              <h2 style="font-family: georgia; margin: 10px; font-size: 20px">Parameter Info</h2>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row no-padding no-margin>
+            <ion-col col-12 col-md-6 no-padding no-margin>
+              <ion-item id="rounded" no-lines no-padding no-margin>
+                <ion-label stacked>Unit Name</ion-label>
+                <ion-input class="inputStyle" [(ngModel)]="parameter.unit_name" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin>
+                <ion-label stacked>CPU Serial Number</ion-label>
+                <ion-input class="inputStyle" [(ngModel)]="parameter.cpuserialno" no-padding no-margin disabled></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin>
+                <ion-label stacked>FPS</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.FPS" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin> 
+                <ion-label stacked>Recording Length</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.RecordingLength" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>Incident Delay</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.IncidentDelay"></ion-input>
+              </ion-item>
+              <!-- <ion-item>
+                <ion-label stacked>C Mode</ion-label> -->
+                <ion-input type="hidden" [(ngModel)]="parameter.CMode"></ion-input>
+              <!-- </ion-item> -->
+              <ion-item no-lines>
+                <ion-label stacked>Camera Sensitivity</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.CameraSensitivity"></ion-input>
+              </ion-item>
+              
+              <ion-item no-lines> 
+                <ion-label stacked>Track</ion-label>
+                <ion-toggle [(ngModel)]="parameter.Track" ></ion-toggle>
+              </ion-item>
+              <!-- <ion-item no-padding no-margin>
+                <ion-label stacked>Send Movement Mail</ion-label> -->
+                <ion-input type="hidden" [(ngModel)]="parameter.SendMovementMail"></ion-input>
+              <!-- </ion-item> -->
+              <ion-item>
+                <ion-label stacked>HDMI Off</ion-label>
+                <ion-toggle [(ngModel)]="parameter.HDMIOff"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>Reset</ion-label>
+                <ion-toggle [(ngModel)]="parameter.Reset"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>Show</ion-label>
+                <ion-toggle [(ngModel)]="parameter.Show"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>Vibration</ion-label>
+                <ion-toggle [(ngModel)]="parameter.Vibration" no-padding no-margin></ion-toggle>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-12 col-md-6 no-padding no-margin>
+              
+              <ion-item no-lines no-padding no-margin>
+                <ion-label stacked>Vibration Cut Off</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.VibrationCutOff" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin>
+                <ion-label stacked>Motion Cut Off</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.MotionCutOff" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin> 
+                <ion-label stacked>Time Delay</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.TimeDelay" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-padding no-margin>
+                <ion-label stacked>PMax Pixel Area</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.PMaxPixelArea"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>P Contour Number</ion-label>
+                <ion-input class="inputStyle" [(ngModel)]="parameter.PContourNos"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>CMD Fetch Delay</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.cmdFetchDelay"></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin>
+                <ion-label stacked>Rules Motion Max</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.RulesMotionMax" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin>
+                <ion-label stacked>Rules Vibration Max</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.RulesVibrationMax" no-padding no-margin></ion-input>
+              </ion-item>
+              <ion-item no-lines no-padding no-margin> 
+                <ion-label stacked>Rules Duration Max</ion-label>
+                <ion-input type="number" class="inputStyle" [(ngModel)]="parameter.RulesDurationMax" no-padding no-margin></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 col-md-6 offset-md-3>
+              <button ion-button class="goshalaBtn" block round (click)="updateParams(parameter)">Update</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        </ion-scroll>
+      </div>
+      
+      <!-- COMMAND SEGMENT -->
+      <div *ngSwitchCase="'report'">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2 style="font-family: georgia; margin: 10px; font-size: 20px">Cost Info</h2>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 col-md-4>
+              <ion-item id="rounded">
+                <ion-label stacked>Cost of Vehicle</ion-label>
+                <ion-input class="inputStyle" [(ngModel)]="monitor.vehicleCost" no-padding no-margin></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-12 col-md-4>
+              <ion-item>
+                <ion-label stacked>Book Value</ion-label>
+                <ion-input class="inputStyle" [(ngModel)]="monitor.bookValue" no-padding no-margin></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-12 col-md-4>
+              <ion-item>
+                <ion-label stacked>Residual Value</ion-label>
+                <ion-input class="inputStyle" [(ngModel)]="monitor.residualValue" no-padding no-margin></ion-input>
+                <!-- <ion-select class="selectStyle" [(ngModel)]="monitor.gender" (ionChange)="cdr.detectChanges()">
+                  <ion-option value="M">Male</ion-option>
+                  <ion-option value="F">Female</ion-option>
+                  <ion-option value="Ox">Ox</ion-option>
+                </ion-select> -->
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
+
+  </ion-card>
+
+</ion-content>
+<!-- <ion-footer text-center style="background-color: #455A64; height: 70px; padding: 10px; font-weight: bold; font-size: 30px;"></ion-footer> -->

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>
+      Stats
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBackground">
+
+  <ion-grid style="margin: 100px auto">
+    <ion-row>
+      <ion-col col-12 col-md-6 offset-md-3>
+
+        <ion-card style="background-color: rgba(250,250,250,0.8); border-radius: 15px">
+          <ion-card-header style="background-image: linear-gradient(to right, yellowgreen,rgb(159, 205, 50), rgb(204, 207, 17)); padding: 8px" text-center>
+            <h2 style="font-weight: bold; color: floralwhite; font-size: 22px; ">Greenhouse Environment</h2>
+          </ion-card-header>
+
+          <ion-card-content text-center style="width: 65%; margin: auto" padding>
+            <ion-item style="font-size: 14px !important">
+              <ion-label class="fixedLabel" fixed>
+                <ion-icon style="color: red; zoom: 1.0;" icon-start name="ios-thermometer-outline">   </ion-icon>
+                Temperature
+              </ion-label>
+              <ion-input [(ngModel)]="sensor.temp"></ion-input>
+            </ion-item>
+            <ion-item style="font-size: 14px !important">
+              <ion-label class="fixedLabel" fixed>
+                
+                <ion-icon style="color: green; zoom: 1.0;" icon-start name="ios-color-fill">   </ion-icon>
+                Soil Moisture
+              </ion-label>
+              <ion-input [(ngModel)]="sensor.soil"></ion-input>
+            </ion-item>
+            <ion-item style="font-size: 14px !important">
+              <ion-label class="fixedLabel" fixed>
+                
+                <ion-icon style="color: royalblue" icon-start name="ios-water">   </ion-icon>
+                Humidity
+              </ion-label>
+              <ion-input [(ngModel)]="sensor.humidity"></ion-input>
+            </ion-item>
+            <ion-item style="font-size: 14px !important">
+              <ion-label class="fixedLabel" fixed>
+                
+                <ion-icon style="color: orange" icon-start name="ios-sunny">   </ion-icon>
+                Solar Radiation
+              </ion-label>
+              <ion-input [(ngModel)]="sensor.solar"></ion-input>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+
+</ion-content>

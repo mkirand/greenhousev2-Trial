@@ -1,0 +1,116 @@
+.cardtransparent {
+    background:rgba(255,255,255,0.5);
+}
+
+.videogular-container {
+    width: 75%;
+    //height: 50%;
+    margin: auto;
+    //overflow: show;
+}
+
+ion-content {
+        vg-player {
+            width: 100%;
+            height: 100%;
+
+            video {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+.item-md, item-ios {
+  background-color: transparentize($color: #ffffff, $amount: 1) !important;
+  // margin-bottom: 5px;
+  // color: black;
+}
+
+
+// ion-select{
+//   margin: 0 auto;
+//   text-align: center !important;
+//   // display: grid !important;
+//   max-width: 100% !important;
+// }
+
+.inputStyle {
+  width: 100%;
+  background-color: whitesmoke; 
+  border-radius: 5px; 
+  margin-top: 10px; 
+  border: 0.5px solid lightgrey; 
+  padding: 2px 10px;  
+  height: 40px; 
+  vertical-align: center
+}
+
+.selectStyle {
+  background-color: whitesmoke; 
+  border-radius: 5px; 
+  margin-top: 10px; 
+  border: 0.5px solid lightgrey; 
+  padding: 10px 10px;  
+  height: 40px; 
+  vertical-align: center
+}
+
+.textareaStyle {
+  background-color: whitesmoke; 
+  border-radius: 5px; 
+  margin-top: 10px; 
+  border: 0.5px solid lightgrey; 
+  padding: 10px 10px;  
+  // height: 40px; 
+  vertical-align: center
+}
+
+ion-col {
+  padding: 10px;
+  padding-right: 30px;
+}
+
+
+ion-item {
+  border-bottom: none !important;
+  // width: 100%;
+}
+
+.fixedLabel {
+  min-width: 60% !important;
+  max-width: 60% !important;
+  font-size: 15px !important;
+
+  // word-wrap: break-word !important;
+  // overflow-wrap: normal !important;
+}
+
+ion-label {
+  color: black !important;
+  font-weight: bold;
+  font-size: 14px !important;
+}
+
+.progress-outer {
+    width: 80%;
+    margin: 10px auto;
+    padding: 1px;
+    text-align: center;
+    background-color: #f4f4f4b0;
+    border: .75px solid #dcdcdc;
+    color: #fff;
+    border-radius: 20px;
+  }
+
+  .progress-inner {
+    min-width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 20px;
+    background-color: rgb(238, 150, 68);
+    color: black;
+  }

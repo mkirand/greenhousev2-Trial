@@ -1,0 +1,107 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Licenses</ion-title>
+      <!-- <div style="display: inline-block; width: 50%; padding-right: 20px"  float-right>
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+      </div> -->
+
+    <!-- <ion-buttons end>
+      <button ion-button (click)="openGoshalaAlert()">
+        <ion-icon name="add"></ion-icon>   
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="homeBackground">
+
+
+
+<ion-fab bottom right>
+    <button ion-fab mini color="dark" (click)="goToAddLicensePage()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col no-padding></ion-col>    
+      <ion-col col-12 col-md-7  no-padding>
+
+        <ion-searchbar placeholder="Search Fleet by 'Reg No', 'Chasis No' or 'Engine No'" autocomplete="on" (search)="getLicenses($event)"></ion-searchbar>
+        <div style="margin: 25% auto" text-center>
+        <h2 style="font-size: 18px; color: white; " *ngIf="prompt">({{prompt}})</h2>
+        </div>
+  <!-- <ion-card *ngFor="let goshala of goshalas" (click)="goToGoshalaDetailPage(goshala)">
+    <ion-card-content>
+      <ion-card-title>{{goshala.Goshala_Name}}</ion-card-title>
+    </ion-card-content> 
+
+    <img [src]="goshala.Goshala_Image_Path"/>  
+  </ion-card> -->
+
+  <ion-card mode="ios"  class="homeCard1" *ngFor="let license of licenses" no-padding>
+    
+    <ion-item-sliding>
+      <ion-item>
+        
+        <ion-thumbnail item-start no-padding (click)="goToFarmDashboardPage(fleet)">
+          <img *ngIf="license.imageName !== null" [src]="'https://www.dev-x.co.za/MayapurIT/Fleet/uploads/'+ license.imageName + '?time=' + license.imageTimeStamp.substr(license.imageTimeStamp.length - 8)" onerror="this.src='https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1194310/1160/772/m1/fpnw/wm0/car-flat-icon-01-.jpg?1461090512&s=129ad0047b3df884aca62d72a9b10bff';"/>
+          <!-- <img *ngIf="fleet.pic1 === null" src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1194310/1160/772/m1/fpnw/wm0/car-flat-icon-01-.jpg?1461090512&s=129ad0047b3df884aca62d72a9b10bff"/> -->
+        </ion-thumbnail>
+        <div style="font-size: 14.5px;">
+          <!-- <ion-scroll mode="ios" scrollY="true" scrollX="true" style="height: 150px; max-width: 800px"> -->
+        <h2 style="font-size: 16.5px; margin-bottom: 5px"><strong>{{license.makeModel}}</strong></h2>
+        <ion-grid no-padding>
+          <ion-row>
+             <ion-col col-12 col-lg-6>
+              <div><span class="subheader">Registration No:</span> {{license.regNo}}</div>
+              <div><span class="subheader">Expiry Date:</span> {{license.cofExpiryDate}}</div>
+              <div><span class="subheader">Collected Date:</span> {{license.collectedDate}}</div>
+              
+             </ion-col>
+             <ion-col col-12 col-lg-6>
+              <div><span class="subheader">Renew Status:</span> {{license.renewStatus}}</div>
+        <div><span class="subheader">Collected By:</span> <em>{{license.collectedBy}}</em></div>
+             </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: 10px">
+            <ion-col>
+              <button style="height: 25px; color: bisque; font-size: 13px" ion-button color="dark" (click)="goToUpdateVehiclePage(fleet)">View License</button>
+            </ion-col>
+          </ion-row>
+         
+        </ion-grid>
+        
+        
+        <!-- </ion-scroll>   -->
+        </div>
+        <!-- <button ion-button outline color="dark" item-end (click)="goToFarmDashboardPage(goshala)">View</button> -->
+        
+      </ion-item>
+      
+      <ion-item-options side="right">  
+	  			<button ion-button color="danger" (click)="deleteGoshala(goshala)">
+	  				<ion-icon name="trash"></ion-icon>	
+	  			</button>			
+	  	</ion-item-options>
+      
+    </ion-item-sliding>
+    
+  </ion-card>
+
+    <!-- <button ion-button color="dark" (click)="goToAddFarmPage()" block>Add Farm</button> -->
+
+
+
+
+      </ion-col>
+      <ion-col no-padding></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
