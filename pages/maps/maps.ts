@@ -30,46 +30,47 @@ interface Track{
 })
 export class MapsPage {
  
-  public farms = [
-    {
-      locality: '21 Pan Road, Laneria',
-      name: "Northern Farm",
-      crops: "Carrots, Green Beans, Lettuce",
-      image: "https://lh5.googleusercontent.com/p/AF1QipNUgwif_UXUvgVt5AhaLK2tOq6jMoCiSiy1Nq9L=w426-h240-k-no",
-      temp: '36C',
-      soil: '140mm',
-      humidity: '62%',
-      solar: '45 lux',
-      gpsLat:'-25.929778',
-      gpsLong: '27.955159',
-      status:'Offline(Maintenance)'
-    },
-    {
-      locality: '5 Ashenti Rd, Lanseria',
-      name: "Monaghan Farm",
-      crops: "Radish, Green Beans, Lettuce",
-      image: "https://lh4.googleusercontent.com/proxy/Ok-2zDC5iYLjWdVO4wGQxCUcBEWxSMSd1peC3Gqjqa3SzQplZ8RuHRw3ZKrWToLTO_PKWd5REy-Q2ZynJUVw3f5VETogYfxcFhd2CqjLL41Y6mwkTLlSoKX1NpyaeCJRE9XGy6k1Ky_kOraYsuAgkH3I6izEVRY=w408-h305-k-no",
-      temp: '45C',
-      soil: '150mm',
-      humidity: '59%',
-      solar: '40 lux',
-      gpsLat:'-25.915799',
-      gpsLong: '27.927210',
-      status: 'Online'
-    },
-    {
-      locality: 'Ptn 130 Farm 489 Hennops River',
-      name: "Gansbaai Lapa",
-      crops: "Pepeprs, Radhish, Lettuce",
-      image: "https://lh5.googleusercontent.com/p/AF1QipMnjR_-yreKQRztvKdARMIHrHC1cYrPKWgiyh9C=w408-h304-k-no",
-      temp: '45C',
-      soil: '150mm',
-      humidity: '61%',
-      solar: '40 lux',
-      gpsLat:'-25.834368',
-      gpsLong: '27.952650',
-      status:'Online'
-    },]
+  public farms = [];
+  // public farms = [
+  //   {
+  //     locality: '21 Pan Road, Laneria',
+  //     name: "Northern Farm",
+  //     crops: "Carrots, Green Beans, Lettuce",
+  //     image: "https://lh5.googleusercontent.com/p/AF1QipNUgwif_UXUvgVt5AhaLK2tOq6jMoCiSiy1Nq9L=w426-h240-k-no",
+  //     temp: '36C',
+  //     soil: '140mm',
+  //     humidity: '62%',
+  //     solar: '45 lux',
+  //     gpsLat:'-25.929778',
+  //     gpsLong: '27.955159',
+  //     status:'Offline(Maintenance)'
+  //   },
+  //   {
+  //     locality: '5 Ashenti Rd, Lanseria',
+  //     name: "Monaghan Farm",
+  //     crops: "Radish, Green Beans, Lettuce",
+  //     image: "https://lh4.googleusercontent.com/proxy/Ok-2zDC5iYLjWdVO4wGQxCUcBEWxSMSd1peC3Gqjqa3SzQplZ8RuHRw3ZKrWToLTO_PKWd5REy-Q2ZynJUVw3f5VETogYfxcFhd2CqjLL41Y6mwkTLlSoKX1NpyaeCJRE9XGy6k1Ky_kOraYsuAgkH3I6izEVRY=w408-h305-k-no",
+  //     temp: '45C',
+  //     soil: '150mm',
+  //     humidity: '59%',
+  //     solar: '40 lux',
+  //     gpsLat:'-25.915799',
+  //     gpsLong: '27.927210',
+  //     status: 'Online'
+  //   },
+  //   {
+  //     locality: 'Ptn 130 Farm 489 Hennops River',
+  //     name: "Gansbaai Lapa",
+  //     crops: "Pepeprs, Radhish, Lettuce",
+  //     image: "https://lh5.googleusercontent.com/p/AF1QipMnjR_-yreKQRztvKdARMIHrHC1cYrPKWgiyh9C=w408-h304-k-no",
+  //     temp: '45C',
+  //     soil: '150mm',
+  //     humidity: '61%',
+  //     solar: '40 lux',
+  //     gpsLat:'-25.834368',
+  //     gpsLong: '27.952650',
+  //     status:'Online'
+  //   },]
 
 
  //NGX-DATA TABLE
@@ -117,9 +118,9 @@ export class MapsPage {
     // this.goshalas = this.imcpaAppProvider.getGoshalas();
     
     
-    this.monitors=this.farms;
+    // this.monitors=this.farms;
 
-    //this.getMonitors();
+    this.getFarms();
     // this.getStats();
   }
   async presentLoading() {
@@ -151,13 +152,13 @@ export class MapsPage {
 
   }
 
-  getMonitors(){
+  getFarms(){
     this.presentLoading();
-    this.dbService.fetchDataV2("SELECT * from pi_units p where p.Client_Name= '" + this.myApp.user.Client_Name + "'")
+    this.dbService.fetchDataV2("SELECT * from farms")
       .map(res => res.json())
       .subscribe(res => {
         this.loading.dismiss();
-        this.monitors=res.data;
+        this.farms=res.data;
         console.log(this.monitors);
         // console.log("In Json Format: " + res.json())
         

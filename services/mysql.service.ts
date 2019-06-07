@@ -41,7 +41,7 @@ public fetchDataV2(mysql:string): Observable<any> {
       // postData.append('mytime');
 
     //Site to post data to 
-    return this.http.post("https://www.dev-x.co.za/Projects/PhoenixInstruments/BirdScanner/birdSql.php", postData)
+    return this.http.post("https://www.dev-x.co.za/Projects/GreenHouse/GreenHouse.php", postData)
   }
 
 }

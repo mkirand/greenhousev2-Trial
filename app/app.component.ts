@@ -28,7 +28,7 @@ import { ReportsPage } from '../pages/reports/reports';
 
 @Component({
   templateUrl: 'app.html',
-  styleUrls: ['./app.css'],
+  styleUrls: ['./app.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class MyApp {

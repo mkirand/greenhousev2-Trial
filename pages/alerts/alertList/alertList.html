@@ -29,7 +29,7 @@
                       <h2 style="font-weight: bold; color: floralwhite; font-size: 13px; ">{{col}}{{row}}</h2>
                     </ion-card-header>
                     <ng-container *ngFor="let plant of plants" (click)="goToAlertModal(plant)">
-                      <ng-container *ngIf="(col + row) === plant.position; else content">
+                      <ng-container *ngIf="(col + row) === plant.plotPosition; else content">
                         
                         <ion-card-content style="background-color: black; height: 100px; position: relative;" (click)="goToAlertModal(plant)" no-padding>
                           <!-- <ion-item no-lines style="border-bottom: none !important;" no> -->
@@ -37,7 +37,7 @@
                             <img style="opacity: 0.9;"  [src]="plant.image"/>
                           <!-- </div> -->
                           <div style="position: absolute; top: 0.5%; left: 2%">
-                          <h2 text-left style="color: white; font-weight: bold; font-size: 20px;">{{plant.name}}({{plant.expectedYeild}})</h2>    
+                          <h2 text-left style="color: white; font-weight: bold; font-size: 20px;">{{plant.name}}({{plant.expectedYield}}{{plant.expectedYieldUnitType}})</h2>    
 
                           <div class="progress-outer" style="margin: 10px auto; position: relative" text-center>
                             
@@ -53,25 +53,25 @@
                                 <ion-col  text-center>
                                   <button style="color: lightgray" ion-button icon-start clear no-margin small>
                                     <ion-icon name="ios-thermometer-outline"></ion-icon>
-                                    <div>{{plant.temp}}</div>
+                                    <div>{{plant.sensorTemperature}}{{plant.sensorTemperatureUnitType}}</div>
                                   </button>
                                 </ion-col>
                                 <ion-col text-center>
                                   <button style="color: lightgray" ion-button icon-start clear no-margin small>
                                     <ion-icon name="ios-color-fill"></ion-icon>
-                                    <div>{{plant.soil}}</div>
+                                    <div>{{plant.sensorRootMoisture}}{{plant.sensorRootMoistureUnitType}}</div>
                                   </button>
                                 </ion-col>
                                 <ion-col  text-center>
                                   <button style="color: lightgray" ion-button icon-start clear no-margin small>
                                     <ion-icon name="ios-water"></ion-icon>
-                                    <div>{{plant.humidity}}</div>
+                                    <div>{{plant.sensorHumidity}}{{plant.sensorHumidityUnitType}}</div>
                                   </button>
                                 </ion-col>
                                 <ion-col text-center>
                                   <button style="color: lightgray" ion-button icon-start clear no-margin small>
                                     <ion-icon name="ios-sunny"></ion-icon>
-                                    <div>{{plant.solar}}</div>
+                                    <div>{{plant.sensorLighting}}{{plant.sensorLightingUnitType}}</div>
                                   </button>
                                 </ion-col>
 

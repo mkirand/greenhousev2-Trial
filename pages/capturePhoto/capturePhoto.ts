@@ -182,7 +182,7 @@ export class CapturePhotoPage {
     // formData.append('id', this.fleet.id);
     // formData.append('pic', this.pic);
     
-    const res = await (this.http.post('https://www.dev-x.co.za/Projects/PhoenixInstruments/BirdScanner/webApp/birdUpload.php', formData).toPromise())
+    const res = await (this.http.post('https://www.dev-x.co.za/Projects/GreenHouse/webApp/Profile/profileUpload.php', formData).toPromise())
     
     // const req = new HttpRequest('POST', 'https://www.dev-x.co.za/MayapurIT/Goshala/uploadGoshala.php', formData, {reportProgress: true,})
 

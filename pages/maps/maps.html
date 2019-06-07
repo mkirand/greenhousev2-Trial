@@ -47,7 +47,7 @@
             (mapClick)="mapClicked($event)">
 
 <!-- [iconUrl]="markerType(g.status)" add to agm-marker to set custome iocn-->
-            <ng-container *ngFor="let g of monitors; let i = index"> 
+            <ng-container *ngFor="let g of farms; let i = index"> 
             <agm-marker style="font-size: 3px"
               
               (markerClick)="clickedMarker(g, i)"
@@ -58,7 +58,7 @@
               >
 
               <agm-info-window style="font-family: georgia" [disableAutoPan]="false" #infoWindow no-padding>
-                <p style="font-size: 12px; font-family: times new roman"><b>{{g.name}} : {{g.status}}</b></p>
+                <p style="font-size: 12px; font-family: times new roman"><b>{{g.name}} : {{g.farmStatus}}</b></p>
               </agm-info-window >
 
             </agm-marker>

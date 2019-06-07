@@ -61,25 +61,25 @@
           <ion-col text-center  no-margin no-padding>
             <button style="color: floralwhite" ion-button icon-start clear no-margin small>
               <ion-icon name="ios-thermometer-outline"></ion-icon>
-              <div>{{farm.temp}}</div>
+              <div>{{farm.sensorTemperature}}{{farm.sensorTemperatureUnitType}}</div>
             </button>
           </ion-col>
           <ion-col text-center  no-margin no-padding>
             <button style="color: floralwhite" ion-button icon-start clear no-margin small>
               <ion-icon name="ios-color-fill"></ion-icon>
-              <div>{{farm.soil}}</div>
+              <div>{{farm.sensorRootMoisture}}{{farm.sensorRootMoistureUnitType}}</div>
             </button>
           </ion-col>
           <ion-col  text-center  no-margin no-padding>
             <button style="color: floralwhite" ion-button icon-start clear no-margin small>
               <ion-icon name="ios-water"></ion-icon>
-              <div>{{farm.humidity}}</div>
+              <div>{{farm.sensorHumidity}}{{farm.sensorHumidityUnitType}}</div>
             </button>
           </ion-col>
           <ion-col text-center  no-margin no-padding>
             <button style="color: floralwhite" ion-button icon-start clear no-margin small>
               <ion-icon name="ios-sunny"></ion-icon>
-              <div>{{farm.solar}}</div>
+              <div>{{farm.sensorLighting}}{{farm.sensorLightingUnitType}}</div>
             </button>
           </ion-col>
 
@@ -91,7 +91,7 @@
       <ion-item style="padding-right: none !important" no-lines>
         
         <ion-thumbnail item-start no-padding >
-          <img  [src]="farm.image"
+          <img  [src]="farm.farmImage"
            onerror="this.src='https://5.imimg.com/data5/KB/DS/MY-69760/magnifying-glass-500x500.jpg';"/>
           
         </ion-thumbnail>
@@ -107,9 +107,9 @@
         <ion-grid no-padding>
           <ion-row>
              <ion-col col-12 col-lg-6 style="padding-right: 15px">
-              <div><span class="subheader">Address:</span> {{farm.locality}}</div>
+              <div><span class="subheader">Address:</span> {{farm.address}}, {{farm.city}}, {{farm.state}}, {{farm.country}}, {{farm.continent}} {{farm.pincode}}</div>
               <div><span class="subheader">Crops:</span> {{farm.crops}}</div>
-              <div><span class="subheader">Status:</span> {{farm.status}}</div>
+              <div><span class="subheader">Status:</span> {{farm.farmStatus}}</div>
               <!-- <div><span class="subheader">Client Name:</span> {{farm.Client_Name}}</div> -->
             </ion-col> 
           </ion-row>

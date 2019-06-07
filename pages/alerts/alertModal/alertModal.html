@@ -13,7 +13,7 @@
         <ion-icon name="md-close"></ion-icon> 
       </button>
       <div  style="float: left; width: 87%;">
-        <h1 style="font-family: georgia; margin-top: 10px;  color: white" >{{plant.position}} Plot</h1>
+        <h1 style="font-family: georgia; margin-top: 10px;  color: white" >{{plant.plotPosition}} Plot</h1>
       </div>
          
       
@@ -50,7 +50,7 @@
               </ion-item>
               <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
                 <ion-label stacked>Position</ion-label>
-                <ion-input  class="inputStyle" [(ngModel)]="plant.position" no-padding no-margin ></ion-input>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.plotPosition" no-padding no-margin ></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -58,7 +58,7 @@
             <ion-col col-12 col-md-6>
               <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
                 <ion-label stacked>Planted On</ion-label>
-                <ion-datetime class="selectStyle" displayFormat="DD-MM-YYYY" pickerFormat="D MMM YYYY" [(ngModel)]="plant.plantedOn" ></ion-datetime>
+                <ion-datetime class="selectStyle" displayFormat="DD-MM-YYYY" pickerFormat="D MMM YYYY" [(ngModel)]="plant.plantedDate" ></ion-datetime>
               </ion-item>
               <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
                 <ion-label stacked>Expected Harvest Date</ion-label>
@@ -67,12 +67,12 @@
             </ion-col>
             <ion-col col-12 col-md-6>
               <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
-                <ion-label stacked>Expected Harvest Yeild</ion-label>
-                <ion-input  class="inputStyle" [(ngModel)]="plant.expectedYeild" no-padding no-margin ></ion-input>
+                <ion-label stacked>Expected Harvest Yield</ion-label>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.expectedYield" no-padding no-margin ></ion-input>
               </ion-item>
               <ion-item no-lines no-margin no-padding style="; margin: 0 auto; border-bottom: none !important; padding-right: none !important">
                 <ion-label stacked>Planted Area</ion-label>
-                <ion-input  class="inputStyle" [(ngModel)]="plant.plantedArea" no-padding no-margin ></ion-input>
+                <ion-input  class="inputStyle" [(ngModel)]="plant.plotArea" no-padding no-margin ></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -140,7 +140,7 @@
                 <ion-icon style="color: red; zoom: 1.0;" icon-start name="ios-thermometer-outline">   </ion-icon>
                 Temperature
               </ion-label>
-              <ion-input [(ngModel)]="plant.temp"></ion-input>
+              <ion-input [(ngModel)]="plant.sensorTemperature"></ion-input>
             </ion-item>
             <ion-item style="font-size: 16px !important">
               <ion-label class="fixedLabel" fixed>
@@ -148,7 +148,7 @@
                 <ion-icon style="color: green; zoom: 1.0;" icon-start name="ios-color-fill">   </ion-icon>
                 Soil Moisture
               </ion-label>
-              <ion-input [(ngModel)]="plant.soil"></ion-input>
+              <ion-input [(ngModel)]="plant.sensorRootMoisture"></ion-input>
             </ion-item>
             <ion-item style="font-size: 16px !important">
               <ion-label class="fixedLabel" fixed>
@@ -156,7 +156,7 @@
                 <ion-icon style="color: royalblue" icon-start name="ios-water">   </ion-icon>
                 Humidity
               </ion-label>
-              <ion-input [(ngModel)]="plant.humidity"></ion-input>
+              <ion-input [(ngModel)]="plant.sensorHumidity"></ion-input>
             </ion-item>
             <ion-item style="font-size: 16px !important">
               <ion-label class="fixedLabel" fixed>
@@ -164,7 +164,7 @@
                 <ion-icon style="color: orange" icon-start name="ios-sunny">   </ion-icon>
                 Solar Radiation
               </ion-label>
-              <ion-input [(ngModel)]="plant.solar"></ion-input>
+              <ion-input [(ngModel)]="plant.sensorLighting"></ion-input>
             </ion-item>
           </ion-card-content>
         </ion-card>
