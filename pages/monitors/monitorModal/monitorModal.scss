@@ -7,7 +7,7 @@
 }
 
 agm-map {
-    height: 300px; 
+    height: 220px; 
   } 
 
 // ion-select{
@@ -53,6 +53,50 @@ ion-col {
   padding-right: 30px;
 }
 
+.fixedLabel {
+
+  min-width: 60% !important;
+  max-width: 60% !important;
+  font-size: 15px !important;
+
+  // word-wrap: break-word !important;
+  // overflow-wrap: normal !important;
+}
+
 ion-label {
   color: black !important;
+  font-weight: bold;
+  font-size: 14px !important;
+}
+
+.progress-outer {
+    width: 80%;
+    margin: 10px auto;
+    padding: 1px;
+    text-align: center;
+    background-color: #f4f4f4b0;
+    border: .75px solid #dcdcdc;
+    color: #fff;
+    border-radius: 20px;
+  }
+
+  .progress-inner {
+    min-width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 20px;
+    background-color: rgb(238, 150, 68);
+    color: black;
+  }
+
+// ::-webkit-scrollbar,
+// *::-webkit-scrollbar {
+//   display: none;
+// }
+
+ion-content .scroll-content {
+    overflow-y: hidden !important;
 }

@@ -72,8 +72,8 @@ export class MonitorListPage {
     return await this.loading.present();  
   }
 
-  goToAlertModal(monitor) {
-    const modal = this.modalCtrl.create(MonitorModalPage, {monitor: monitor});
+  goToFarmModal(farm) {
+    const modal = this.modalCtrl.create(MonitorModalPage, {farm: farm});
     modal.present();
   }
 

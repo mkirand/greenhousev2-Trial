@@ -29,16 +29,18 @@ export class MonitorModalPage {
   // lng: number = 153.31907;
 
   tracker: string = "Infrigement";
-
-  monitorDashboard: string = "map";
-  public monitor = {};
-  public parameter = [];
+ 
+  farmDashboard: string = "farmDetail";
+  farmDetailDashboard: string = "info";
+  public farm = {};
+  public plants = []; 
   public loading;
   public myreturnvalue;
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public loadingCtrl: LoadingController, private dbService: MysqlService, private myApp: MyAppProvider) {
-    this.monitor = this.navParams.get("monitor");
-    this.getParameters();
+    this.farm = this.navParams.get("farm");
+    this.getPlants();
+    // this.getParameters();
   }
 
   async presentLoading() {
@@ -48,14 +50,14 @@ export class MonitorModalPage {
     return await this.loading.present();  
   }
 
-  getParameters(){
+  getPlants(){
     this.presentLoading();
-    this.dbService.fetchDataV2("SELECT * from pi_parameters pp where pp.cpuserialno = '" + this.monitor.cpuserial + "'")
+    this.dbService.fetchDataV2("SELECT * from crops where farmId = " + this.farm.id + " GROUP BY crops.name")
       .map(res => res.json())
       .subscribe(res => {
         this.loading.dismiss();
-        this.parameter=res.data[0];
-        console.log(this.parameter);
+        this.plants = res.data;
+        console.log(this.plants);
         // console.log("In Json Format: " + res.json())
         
         }, error => {

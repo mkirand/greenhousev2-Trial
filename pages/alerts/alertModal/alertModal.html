@@ -34,7 +34,7 @@
     <!-- ALERT SEGMENT CONTENT --> 
     <div [ngSwitch]="alertDashboard">
     <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 560px" no-padding no-margin>
-      <!-- VIDEO SEGMENT -->
+      <!-- INFO SEGMENT -->
       <div *ngSwitchCase="'info'">
         <ion-grid no-padding no-margin>
           <ion-row>
@@ -134,39 +134,45 @@
             <h2 style="font-weight: bold; color: floralwhite; font-size: 18px; ">Plant Environment</h2>
           </ion-card-header>
 
-          <ion-card-content text-center style="width: 65%; margin: auto" padding>
-            <ion-item style="font-size: 16px !important">
-              <ion-label class="fixedLabel" fixed>
-                <ion-icon style="color: red; zoom: 1.0;" icon-start name="ios-thermometer-outline">   </ion-icon>
-                Temperature
-              </ion-label>
-              <ion-input [(ngModel)]="plant.sensorTemperature"></ion-input>
-            </ion-item>
-            <ion-item style="font-size: 16px !important">
-              <ion-label class="fixedLabel" fixed>
-                
-                <ion-icon style="color: green; zoom: 1.0;" icon-start name="ios-color-fill">   </ion-icon>
-                Soil Moisture
-              </ion-label>
-              <ion-input [(ngModel)]="plant.sensorRootMoisture"></ion-input>
-            </ion-item>
-            <ion-item style="font-size: 16px !important">
-              <ion-label class="fixedLabel" fixed>
-                
-                <ion-icon style="color: royalblue" icon-start name="ios-water">   </ion-icon>
-                Humidity
-              </ion-label>
-              <ion-input [(ngModel)]="plant.sensorHumidity"></ion-input>
-            </ion-item>
-            <ion-item style="font-size: 16px !important">
-              <ion-label class="fixedLabel" fixed>
-                
-                <ion-icon style="color: orange" icon-start name="ios-sunny">   </ion-icon>
-                Solar Radiation
-              </ion-label>
-              <ion-input [(ngModel)]="plant.sensorLighting"></ion-input>
-            </ion-item>
-          </ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12 col-md-8 offset-md-2>
+                <ion-card-content text-center style="width: 100%; margin: auto" padding>
+                  <ion-item style="font-size: 16px !important">
+                    <ion-label class="fixedLabel" fixed>
+                      <ion-icon style="color: red; zoom: 1.0;" icon-start name="ios-thermometer-outline">   </ion-icon>
+                      Temperature
+                    </ion-label>
+                    <ion-input readonly="true" [(ngModel)]="plant.sensorTemperature + plant.sensorTemperatureUnitType"></ion-input>
+                  </ion-item>
+                  <ion-item style="font-size: 16px !important">
+                    <ion-label class="fixedLabel" fixed>
+                      
+                      <ion-icon style="color: green; zoom: 1.0;" icon-start name="ios-color-fill">   </ion-icon>
+                      Root Moisture
+                    </ion-label>
+                    <ion-input readonly="true" [(ngModel)]="plant.sensorRootMoisture + plant.sensorRootMoistureUnitType"></ion-input>
+                  </ion-item>
+                  <ion-item style="font-size: 16px !important">
+                    <ion-label class="fixedLabel" fixed>
+                      
+                      <ion-icon style="color: royalblue" icon-start name="ios-water">   </ion-icon>
+                      Humidity
+                    </ion-label>
+                    <ion-input readonly="true" [(ngModel)]="plant.sensorHumidity + plant.sensorHumidityUnitType"></ion-input>
+                  </ion-item>
+                  <ion-item style="font-size: 16px !important">
+                    <ion-label class="fixedLabel" fixed>
+                      
+                      <ion-icon style="color: orange" icon-start name="ios-sunny">   </ion-icon>
+                      Solar Radiation
+                    </ion-label>
+                    <ion-input readonly="true" [(ngModel)]="plant.sensorLighting + plant.sensorLightingUnitType"></ion-input>
+                  </ion-item>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </div>
       
